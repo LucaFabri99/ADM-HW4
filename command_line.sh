@@ -10,11 +10,11 @@ echo The location that has the maximum number of purchases been made is $(cut -f
 
 #Let's take only the column 'CustGender' and 'CustAccountBalance'.
 #Let's get the rows that contain 'M' and let's sum all the CustAccountBalance.
-echo Males have spent $( cut -f 4,6 bank_transactions.tsv | grep 'M' | awk '{total += $2}END{print total}')
+echo Males have spent $( cut -f 4,9 bank_transactions.tsv | grep 'M' | awk '{total += $2}END{print total}')
 
 #Let's take only the column 'CustGender' and 'CustAccountBalance'.
 #Let's get the rows that contain 'F' and let's sum all the CustAccountBalance.
-echo Females have spent $( cut -f 4,6 bank_transactions.tsv | grep 'F' | awk '{total += $2}END{print total}') 
+echo Females have spent $( cut -f 4,9 bank_transactions.tsv | grep 'F' | awk '{total += $2}END{print total}') 
 
 
 # 3. Report the customer with the highest average transaction amount in the dataset.
@@ -24,3 +24,7 @@ echo Females have spent $( cut -f 4,6 bank_transactions.tsv | grep 'F' | awk '{t
 #As we did for the Q1, since the average transactions is in the row, we cut it and we take only the CustomerID
 
 echo The customer with the highest average transaction amount in the dataset is $(cut -f 2,9 bank_transactions.tsv | awk '{a[$1]+=$2; c[$1]++} END{for(i in a) print i, a[i]/c[i]}' | sort -k 2 -gr | head -n 1 | cut -d' ' -f1)
+
+
+# In order to check the results, run the code below which allows a better visualitazion
+echo  ; echo The location that has the maximum number of purchases been made is $(cut -f 5 bank_transactions.tsv | sort | uniq -c | sort -nr | head -n 1 | cut -d' ' -f2) ; echo; echo Males have spent $( cut -f 4,9 bank_transactions.tsv | grep 'M' | awk '{total += $2}END{print total}'); echo; echo Females have spent $( cut -f 4,9 bank_transactions.tsv | grep 'F' | awk '{total += $2}END{print total}'); echo; echo The customer with the highest average transaction amount in the dataset is $(cut -f 2,9 bank_transactions.tsv | awk '{a[$1]+=$2; c[$1]++} END{for(i in a) print i, a[i]/c[i]}' | sort -k 2 -gr | head -n 1 | cut -d' ' -f1) with $(cut -f 2,9 bank_transactions.tsv | awk '{a[$1]+=$2; c[$1]++} END{for(i in a) print i, a[i]/c[i]}' | sort -k 2 -gr | head -n 1 | cut -d' ' -f2) transactions on average
