@@ -6,9 +6,11 @@ We will implement hashing and clustering techniques to extract relevant informat
 
 ### AlgQuest.ipynb
 This file contains the answer to the Algorithmic Questions
-### command_line.ipynb
-This file has been used to check the result of the command line script
+### Ex2.3.ipynb
+This file contains the kmean algorithm implemented trought map reduce on AWS
 ### command_line.sh
 This is the script for the command line question
 ### main.ipynb
 This file contains the answer to the 1st and 2nd exercises
+### MinHash.ipynb
+This file contains the exercise 1.2
